@@ -1,6 +1,6 @@
 class Solution {
 public:
-    // Sliding window + Set: O(n) Time, O(1) Space
+    // Sliding window + Set: O(n) Time, O(n) Space
     int lengthOfLongestSubstring(string s) {
 
         unordered_set<char> seen;
