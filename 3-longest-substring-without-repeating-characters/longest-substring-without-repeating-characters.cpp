@@ -1,21 +1,21 @@
 class Solution {
 public:
-    // Sliding window + Set: O(n) Time, O(n) Space
+    // Sliding window + fixed size array: O(n) Time, O(1) Space
     int lengthOfLongestSubstring(string s) {
 
-        unordered_set<char> seen;
+        bool seen[128] = {false};
 
         int left = 0;
         int longest = 0;
 
         for (int right = 0; right < s.length(); right++) {
 
-            while (seen.count(s[right])) {
-                seen.erase(s[left]);
+            while (seen[s[right]]) {
+                seen[s[left]] = false;
                 left++;
             }
 
-            seen.insert(s[right]);
+            seen[s[right]] = true;
 
             longest = max(longest, right - left + 1);
         }
